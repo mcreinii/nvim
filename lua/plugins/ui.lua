@@ -1,10 +1,71 @@
 return {
-	-- Fancy ui
+	-- Fancy UI
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
-			-- add any options here
+			cmdline = {
+				view = "cmdline",
+			},
+			presets = {
+				lsp_doc_border = false,
+				bottom_search = true,
+				command_palette = false,
+			},
+			views = {
+				cmdline_popup = {
+					position = {
+						row = 10,
+						col = "50%",
+					},
+					border = {
+						style = "none",
+						padding = { 2, 3 },
+					},
+					size = {
+						min_width = 60,
+						width = "auto",
+						height = "auto",
+					},
+					win_options = {
+						winhighlight = { NormalFloat = "NormalFloat", FloatBorder = "FloatBorder" },
+					},
+				},
+				cmdline_popupmenu = {
+					relative = "editor",
+					position = {
+						row = 13,
+						col = "50%",
+					},
+					size = {
+						width = 60,
+						height = "auto",
+						max_height = 15,
+					},
+					border = {
+						style = "none",
+						padding = { 0, 3 },
+					},
+					win_options = {
+						winhighlight = { NormalFloat = "NormalFloat", FloatBorder = "NoiceCmdlinePopupBorder" },
+					},
+				},
+				hover = {
+					border = {
+						style = "single",
+					},
+				},
+				confirm = {
+					border = {
+						style = "single",
+					},
+				},
+				popup = {
+					border = {
+						style = "single",
+					},
+				},
+			},
 		},
 	},
 
@@ -71,7 +132,7 @@ return {
 				ignore_focus = {},
 				always_divide_middle = true,
 				always_show_tabline = true,
-				globalstatus = false,
+				globalstatus = true,
 				refresh = {
 					statusline = 1000,
 					tabline = 1000,
@@ -95,15 +156,15 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "filetype", "diff", "diagnostics" },
 				lualine_c = {},
-				lualine_x = { "lsp", "fileformat" },
+				lualine_x = { "fileformat", "lsp_status" },
 				lualine_y = { "location" },
 				lualine_z = { "progress" },
 			},
 			inactive_sections = {
 				lualine_a = {},
 				lualine_b = {},
-				lualine_c = { "filename" },
-				lualine_x = { "location" },
+				lualine_c = {},
+				lualine_x = {},
 				lualine_y = {},
 				lualine_z = {},
 			},
