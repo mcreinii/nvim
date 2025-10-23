@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 
 -------------
 -- General --
@@ -24,6 +24,9 @@ map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
+map("n", "<leader>c", "gcc", { noremap = true, silent = true, desc = "Toggle comment" })
+map("v", "<leader>c", "gc", { noremap = true, silent = true, desc = "Toggle comment" })
+
 ------------------------
 -- Windows navigation --
 ------------------------
@@ -43,7 +46,7 @@ map("n", "<C-l>", "<C-w>l", opts)
 -- Buffers --
 -------------
 
-map("n", "<leader>bc", "<cmd>bdelete<cr>", {desc = "Delete buffer"})
+map("n", "<leader>bc", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
 map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Buffer (Next)" })
 map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Buffer (Prev)" })
 
@@ -51,5 +54,5 @@ map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Buffer (Prev)" })
 -- Neovim --
 ------------
 
-map("n", "<leader>vq", "<cmd>qa<cr>", {desc = "Quit Neovim"})
-map("n", "<leader>vQ", "<cmd>qa!<cr>", {desc = "Quit Neovim (Force)"})
+map("n", "<leader>vq", "<cmd>qa<cr>", { desc = "Quit Neovim" })
+map("n", "<leader>vQ", "<cmd>qa!<cr>", { desc = "Quit Neovim (Force)" })

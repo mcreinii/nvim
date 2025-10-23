@@ -6,6 +6,7 @@ return {
 		config = true,
 	},
 
+	-- Telescope (Fuzzy finder)
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
@@ -16,5 +17,13 @@ return {
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers (Telescope)" })
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help tags (Telescope)" })
 		end,
+	},
+
+	-- Comment
+	{
+		"numToStr/Comment.nvim",
+		opts = {
+			-- add any options here
+		},
 	},
 }
