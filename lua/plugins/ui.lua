@@ -1,4 +1,13 @@
 return {
+	-- Fancy ui
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+	},
+
 	-- Neo-Tree file explorer
 	{
 		"nvim-neo-tree/neo-tree.nvim",
