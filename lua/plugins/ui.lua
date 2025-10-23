@@ -165,6 +165,7 @@ return {
 				{ "<leader>lg", group = "Go to" },
 				{ "<leader>b", group = "Buffer" },
 				{ "<leader>n", group = "Neotree" },
+				{ "<leader>f", group = "Fuzzy | Telescope" },
 				{ "<leader>s", group = "Window Splits" },
 				{ "<leader>[", group = "Jump Left" },
 				{ "<leader>]", group = "Jump Right" },
