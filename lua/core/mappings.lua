@@ -14,14 +14,6 @@ map("n", "<leader>r", "<cmd>edit!<cr>", { desc = "Reload file" })
 map({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
 map("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
--- Move lines up/down 🕺
-map("n", "<A-j>", ":m .+1<CR>==", opts)
-map("n", "<A-k>", ":m .-2<CR>==", opts)
-map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
-
 -- Resize splits 🔧
 map("n", "<C-Up>", ":resize -2<CR>", opts)
 map("n", "<C-Down>", ":resize +2<CR>", opts)
