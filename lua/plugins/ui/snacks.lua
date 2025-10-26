@@ -31,24 +31,23 @@ return {
           }
         },
         header = [[
-▖  ▖  ▖ ▖  ▘   
+▖  ▖  ▖ ▖  ▘
 ▛▖▞▌▛▘▛▖▌▌▌▌▛▛▌
 ▌▝ ▌▙▖▌▝▌▚▘▌▌▌▌
         ]],
       },
       sections = {
+
         {
-          section = "keys"
-        },
-        {
-          pane = 2,
           section = "header",
         },
         {
-          pane = 2,
           section = "terminal",
-          cmd = "pipe.sh || bash-pipes"
-        }
+          cmd = "pipe.sh > /dev/null 2>&1 || bash-pipes > /dev/null 2>&1 || echo "
+        },
+        {
+          section = "keys"
+        },
       }
     },
   },
