@@ -1,8 +1,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+require("core.options")
+
 require("config.lazy")
 
-require("core.options")
 require("core.mappings")
 require("core.ui")
