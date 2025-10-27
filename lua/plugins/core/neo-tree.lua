@@ -1,5 +1,7 @@
 -- neo-tree.nvim
 -- Neo-Tree file explorer
+local utils = require("core.utils")
+
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
@@ -15,6 +17,13 @@ return {
 		},
 	},
 	config = function()
+		local neoCacheDir = utils.expand_path("~/.cache/mc-nvim/neo/")
+
+		-- make cache dir if it doesn't exist
+		if vim.fn.isdirectory(neoCacheDir) ~= 1 then
+			vim.fn.mkdir(neoCacheDir, "p") -- "p" makes parent dirs too
+		end
+
 		-- Toggle using <leader>ne
 		vim.keymap.set(
 			"n",
