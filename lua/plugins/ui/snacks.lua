@@ -43,7 +43,8 @@ return {
         },
         {
           section = "terminal",
-          cmd = "pipe.sh > /dev/null 2>&1 || bash-pipes > /dev/null 2>&1 || echo "
+          cmd =
+          "command -v pipes.sh >/dev/null 2>&1 && pipes.sh || command -v bash-pipes >/dev/null 2>&1 && bash-pipes || echo 'No pipe tool found.'"
         },
         {
           section = "keys"
