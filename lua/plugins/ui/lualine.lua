@@ -59,7 +59,7 @@ return {
       -- Modes
       insert_to_left {
         function()
-          return '██'
+          return '██ ☕'
         end,
         color = function()
           local mode_color = {

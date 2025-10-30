@@ -31,9 +31,9 @@ return {
           }
         },
         header = [[
-▖  ▖  ▖ ▖  ▘
-▛▖▞▌▛▘▛▖▌▌▌▌▛▛▌
-▌▝ ▌▙▖▌▝▌▚▘▌▌▌▌
+McNvim
+Neovim, enhanced.
+
         ]],
       },
       sections = {
