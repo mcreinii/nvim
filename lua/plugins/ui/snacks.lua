@@ -33,18 +33,12 @@ return {
         header = [[
 McNvim
 Neovim, enhanced.
-
         ]],
       },
       sections = {
 
         {
           section = "header",
-        },
-        {
-          section = "terminal",
-          cmd =
-          "command -v pipes.sh >/dev/null 2>&1 && pipes.sh || command -v bash-pipes >/dev/null 2>&1 && bash-pipes || echo 'No pipe tool found.'"
         },
         {
           section = "keys"
