@@ -2,6 +2,7 @@
 - [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim)
 - [vague.nvim a cool colorscheme!](https://github.com/vague-theme/vague.nvim)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 - [conform.nvim](https://github.com/stevearc/conform.nvim)
 - [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - [lazydev.nvim](https://github.com/folke/lazydev.nvim)
@@ -12,3 +13,4 @@
 - [mini.comment](https://github.com/nvim-mini/mini.comment)
 - [alpha.nvim](https://github.com/goolord/alpha.nvim)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
+- [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
