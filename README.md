@@ -14,3 +14,5 @@
 - [alpha.nvim](https://github.com/goolord/alpha.nvim)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
+- [mini.surround](https://github.com/nvim-mini/mini.surround)
+- [flash.nvim](https://github.com/folke/flash.nvim)

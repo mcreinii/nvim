@@ -1,132 +1,43 @@
 local hl = require('aether.utils.colorscheme')
 
 local function build_colors()
+    local normal_bg = hl.get_hl('Normal').bg
+
     return {
         modes = {
-            -- Normal
-            n = {
-                mode = 'NORMAL',
-                fg = hl.get_hl('Function').fg or '#5f87af',
-                bg = hl.get_hl('Function').bg or '#1c1c1c1',
-            }, -- dusty blue
-            no = {
-                mode = 'OPERATOR',
-                fg = hl.get_hl('Function').fg or '#5f87af',
-                bg = hl.get_hl('Function').bg or '#1c1c1c1',
-            },
+            n = { mode = 'NORMAL', fg = hl.get_hl('Function').fg, bg = normal_bg },
+            no = { mode = 'OPERATOR', fg = hl.get_hl('Function').fg, bg = normal_bg },
 
-            -- Insert
-            i = {
-                mode = 'INSERT',
-                fg = hl.get_hl('String').fg or '#6a9955',
-                bg = hl.get_hl('String').bg or '#1c1c1c1',
-            }, -- muted green
-            ic = {
-                mode = 'INSERT',
-                fg = hl.get_hl('String').fg or '#6a9955',
-                bg = hl.get_hl('String').bg or '#1c1c1c1',
-            },
-            ix = {
-                mode = 'INSERT',
-                fg = hl.get_hl('String').fg or '#6a9955',
-                bg = hl.get_hl('String').bg or '#1c1c1c1',
-            },
+            i = { mode = 'INSERT', fg = hl.get_hl('String').fg, bg = normal_bg },
+            ic = { mode = 'INSERT', fg = hl.get_hl('String').fg, bg = normal_bg },
+            ix = { mode = 'INSERT', fg = hl.get_hl('String').fg, bg = normal_bg },
 
-            -- Visual
-            v = {
-                mode = 'VISUAL',
-                fg = hl.get_hl('Keyword').fg or '#875f87',
-                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
-            }, -- faded purple
-            V = {
-                mode = 'V-LINE',
-                fg = hl.get_hl('Keyword').fg or '#875f87',
-                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
-            },
-            [''] = {
-                mode = 'V-BLOCK',
-                fg = hl.get_hl('Keyword').fg or '#875f87',
-                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
-            },
+            v = { mode = 'VISUAL', fg = hl.get_hl('Keyword').fg, bg = normal_bg },
+            V = { mode = 'V-LINE', fg = hl.get_hl('Keyword').fg, bg = normal_bg },
+            [''] = { mode = 'V-BLOCK', fg = hl.get_hl('Keyword').fg, bg = normal_bg },
 
-            -- Select
-            s = {
-                mode = 'SELECT',
-                fg = hl.get_hl('Keyword').fg or '#5f8787',
-                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
-            }, -- dusty teal
-            S = {
-                mode = 'S-LINE',
-                fg = hl.get_hl('Keyword').fg or '#5f8787',
-                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
-            },
-            [''] = {
-                mode = 'S-BLOCK',
-                fg = hl.get_hl('Keyword').fg or '#5f8787',
-                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
-            },
+            s = { mode = 'SELECT', fg = hl.get_hl('Keyword').fg, bg = normal_bg },
+            S = { mode = 'S-LINE', fg = hl.get_hl('Keyword').fg, bg = normal_bg },
+            [''] = { mode = 'S-BLOCK', fg = hl.get_hl('Keyword').fg, bg = normal_bg },
 
-            -- Replace
-            R = {
-                mode = 'REPLACE',
-                fg = hl.get_hl('DiagnosticError').fg or '#af5f5f',
-                bg = hl.get_hl('DiagnosticError').bg or '#1c1c1c1',
-            }, -- muted red
-            Rv = {
-                mode = 'V-REPLACE',
-                fg = hl.get_hl('DiagnosticError').fg or '#af5f5f',
-                bg = hl.get_hl('DiagnosticError').bg or '#1c1c1c1',
-            },
+            R = { mode = 'REPLACE', fg = hl.get_hl('DiagnosticError').fg, bg = normal_bg },
+            Rv = { mode = 'V-REPLACE', fg = hl.get_hl('DiagnosticError').fg, bg = normal_bg },
 
-            -- Command
-            c = {
-                mode = 'COMMAND',
-                fg = hl.get_hl('Identifier').fg or '#af875f',
-                bg = hl.get_hl('Identifier').bg or '#1c1c1c1',
-            }, -- soft amber
-            cv = {
-                mode = 'VIM EX',
-                fg = hl.get_hl('Identifier').fg or '#af875f',
-                bg = hl.get_hl('Identifier').bg or '#1c1c1c1',
-            },
-            ce = {
-                mode = 'EX',
-                fg = hl.get_hl('Identifier').fg or '#af875f',
-                bg = hl.get_hl('Identifier').bg or '#1c1c1c1',
-            },
+            c = { mode = 'COMMAND', fg = hl.get_hl('Identifier').fg, bg = normal_bg },
+            cv = { mode = 'VIM EX', fg = hl.get_hl('Identifier').fg, bg = normal_bg },
+            ce = { mode = 'EX', fg = hl.get_hl('Identifier').fg, bg = normal_bg },
 
-            -- Terminal
-            t = {
-                mode = 'TERMINAL',
-                fg = hl.get_hl('Constant').fg or '#5f5f87',
-                bg = hl.get_hl('Constant').bg or '#1c1c1c1',
-            }, -- deep muted indigo
+            t = { mode = 'TERMINAL', fg = hl.get_hl('Constant').fg, bg = normal_bg },
 
-            -- Prompt / misc
-            r = {
-                mode = 'PROMPT',
-                fg = hl.get_hl('Special').fg or '#4f6f6f',
-                bg = hl.get_hl('Special').bg or '#1c1c1c1',
-            }, -- desaturated cyan
-            rm = {
-                mode = 'MORE',
-                fg = hl.get_hl('Special').fg or '#4f6f6f',
-                bg = hl.get_hl('Special').bg or '#1c1c1c1',
-            },
-            ['r?'] = {
-                mode = 'CONFIRM',
-                fg = hl.get_hl('Special').fg or '#4f6f6f',
-                bg = hl.get_hl('Special').bg or '#1c1c1c1',
-            },
+            r = { mode = 'PROMPT', fg = hl.get_hl('Special').fg, bg = normal_bg },
+            rm = { mode = 'MORE', fg = hl.get_hl('Special').fg, bg = normal_bg },
+            ['r?'] = { mode = 'CONFIRM', fg = hl.get_hl('Special').fg, bg = normal_bg },
         },
         git = {
-            branch = {
-                fg = hl.get_hl('Constant').fg or '#1c1c1c1',
-                bg = hl.get_hl('Constant').bg or '#1c1c1c1',
-            },
+            branch = { fg = hl.get_hl('Constant').fg, bg = normal_bg },
         },
-        fg = hl.get_hl('Normal').fg or 'bcbcbc',
-        bg = hl.get_hl('Normal').bg or '1c1c1c',
+        fg = hl.get_hl('Normal').fg,
+        bg = normal_bg,
     }
 end
 
@@ -145,7 +56,7 @@ return {
 
         local colors = build_colors()
 
-        vim.api.nvim_create_autocmd('Colorscheme', {
+        vim.api.nvim_create_autocmd('ColorScheme', {
             callback = function()
                 colors = build_colors()
             end,
@@ -183,7 +94,7 @@ return {
                 readonly = ' 󰌾',
                 unnamed = '[No Name]',
             },
-            color = { fg = colors.fg },
+            color = { fg = colors.fg, bg = colors.bg },
             cond = function()
                 return vim.fn.winwidth(0) > 80
             end,
@@ -193,7 +104,7 @@ return {
         left({
             'branch',
             icon = ' ',
-            color = { fg = colors.git.branch.fg },
+            color = { fg = colors.git.branch.fg, bg = colors.bg },
         })
 
         -- Diffs
@@ -205,9 +116,9 @@ return {
                 removed = ' -',
             },
             diff_color = {
-                added = { fg = '#6a9955' },
-                modified = { fg = '#af875f' },
-                removed = { fg = '#af5f5f' },
+                added = { fg = '#6a9955', bg = colors.bg },
+                modified = { fg = '#af875f', bg = colors.bg },
+                removed = { fg = '#af5f5f', bg = colors.bg },
             },
             cond = function()
                 return vim.fn.winwidth(0) > 80
@@ -225,10 +136,10 @@ return {
                 hint = '󰌵 ',
             },
             diagnostics_color = {
-                error = { fg = '#af5f5f' },
-                warn = { fg = '#af875f' },
-                info = { fg = '#5f87af' },
-                hint = { fg = '#5f8787' },
+                error = { fg = '#af5f5f', bg = colors.bg },
+                warn = { fg = '#af875f', bg = colors.bg },
+                info = { fg = '#5f87af', bg = colors.bg },
+                hint = { fg = '#5f8787', bg = colors.bg },
             },
         })
 
@@ -242,7 +153,7 @@ return {
                 return clients[1].name
             end,
             icon = ' ',
-            color = { fg = colors.fg },
+            color = { fg = colors.fg, bg = colors.bg },
             cond = function()
                 return vim.fn.winwidth(0) > 80
             end,
@@ -253,7 +164,7 @@ return {
             function()
                 return string.format('%d:%d', vim.fn.line('.'), vim.fn.col('.'))
             end,
-            color = { fg = colors.fg },
+            color = { fg = colors.fg, bg = colors.bg },
         })
 
         return {
@@ -261,6 +172,12 @@ return {
                 globalstatus = true,
                 component_separators = { left = '', right = '' },
                 section_separators = { left = '', right = '' },
+                theme = {
+                    normal = {
+                        c = { bg = colors.bg },
+                        x = { bg = colors.bg },
+                    },
+                },
             },
             sections = sections,
         }

@@ -1,7 +1,17 @@
 return {
     'folke/noice.nvim',
     event = 'VeryLazy',
-    opts = {},
+    opts = {
+        popupmenu = {
+            win_options = { winblend = 15 },
+        },
+        cmdline_popup = {
+            win_options = { winblend = 15 },
+        },
+        mini = {
+            win_options = { winblend = 15 },
+        },
+    },
     dependencies = {
         'MunifTanjim/nui.nvim',
         'rcarriga/nvim-notify',

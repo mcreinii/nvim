@@ -7,6 +7,7 @@ o.termguicolors = true
 o.signcolumn = 'yes'
 o.wrap = false
 o.winborder = 'rounded'
+o.scrolloff = 8
 
 o.expandtab = true
 o.tabstop = 4
