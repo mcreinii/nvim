@@ -21,8 +21,8 @@ return {
             { '<leader>f', group = 'Telescope' },
             { '<leader>l', group = 'Language', icon = '' },
             { '<leader>n', group = 'Neogit', icon = '' },
+            { '<leader>m', group = 'Messages', icon = '󰵅' },
         })
-
         wk.setup(opts)
     end,
 }
