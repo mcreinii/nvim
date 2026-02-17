@@ -1,8 +1,139 @@
+local hl = require('aether.utils.colorscheme')
+
+local function build_colors()
+    return {
+        modes = {
+            -- Normal
+            n = {
+                mode = 'NORMAL',
+                fg = hl.get_hl('Function').fg or '#5f87af',
+                bg = hl.get_hl('Function').bg or '#1c1c1c1',
+            }, -- dusty blue
+            no = {
+                mode = 'OPERATOR',
+                fg = hl.get_hl('Function').fg or '#5f87af',
+                bg = hl.get_hl('Function').bg or '#1c1c1c1',
+            },
+
+            -- Insert
+            i = {
+                mode = 'INSERT',
+                fg = hl.get_hl('String').fg or '#6a9955',
+                bg = hl.get_hl('String').bg or '#1c1c1c1',
+            }, -- muted green
+            ic = {
+                mode = 'INSERT',
+                fg = hl.get_hl('String').fg or '#6a9955',
+                bg = hl.get_hl('String').bg or '#1c1c1c1',
+            },
+            ix = {
+                mode = 'INSERT',
+                fg = hl.get_hl('String').fg or '#6a9955',
+                bg = hl.get_hl('String').bg or '#1c1c1c1',
+            },
+
+            -- Visual
+            v = {
+                mode = 'VISUAL',
+                fg = hl.get_hl('Keyword').fg or '#875f87',
+                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
+            }, -- faded purple
+            V = {
+                mode = 'V-LINE',
+                fg = hl.get_hl('Keyword').fg or '#875f87',
+                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
+            },
+            [''] = {
+                mode = 'V-BLOCK',
+                fg = hl.get_hl('Keyword').fg or '#875f87',
+                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
+            },
+
+            -- Select
+            s = {
+                mode = 'SELECT',
+                fg = hl.get_hl('Keyword').fg or '#5f8787',
+                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
+            }, -- dusty teal
+            S = {
+                mode = 'S-LINE',
+                fg = hl.get_hl('Keyword').fg or '#5f8787',
+                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
+            },
+            [''] = {
+                mode = 'S-BLOCK',
+                fg = hl.get_hl('Keyword').fg or '#5f8787',
+                bg = hl.get_hl('Keyword').bg or '#1c1c1c1',
+            },
+
+            -- Replace
+            R = {
+                mode = 'REPLACE',
+                fg = hl.get_hl('DiagnosticError').fg or '#af5f5f',
+                bg = hl.get_hl('DiagnosticError').bg or '#1c1c1c1',
+            }, -- muted red
+            Rv = {
+                mode = 'V-REPLACE',
+                fg = hl.get_hl('DiagnosticError').fg or '#af5f5f',
+                bg = hl.get_hl('DiagnosticError').bg or '#1c1c1c1',
+            },
+
+            -- Command
+            c = {
+                mode = 'COMMAND',
+                fg = hl.get_hl('Identifier').fg or '#af875f',
+                bg = hl.get_hl('Identifier').bg or '#1c1c1c1',
+            }, -- soft amber
+            cv = {
+                mode = 'VIM EX',
+                fg = hl.get_hl('Identifier').fg or '#af875f',
+                bg = hl.get_hl('Identifier').bg or '#1c1c1c1',
+            },
+            ce = {
+                mode = 'EX',
+                fg = hl.get_hl('Identifier').fg or '#af875f',
+                bg = hl.get_hl('Identifier').bg or '#1c1c1c1',
+            },
+
+            -- Terminal
+            t = {
+                mode = 'TERMINAL',
+                fg = hl.get_hl('Constant').fg or '#5f5f87',
+                bg = hl.get_hl('Constant').bg or '#1c1c1c1',
+            }, -- deep muted indigo
+
+            -- Prompt / misc
+            r = {
+                mode = 'PROMPT',
+                fg = hl.get_hl('Special').fg or '#4f6f6f',
+                bg = hl.get_hl('Special').bg or '#1c1c1c1',
+            }, -- desaturated cyan
+            rm = {
+                mode = 'MORE',
+                fg = hl.get_hl('Special').fg or '#4f6f6f',
+                bg = hl.get_hl('Special').bg or '#1c1c1c1',
+            },
+            ['r?'] = {
+                mode = 'CONFIRM',
+                fg = hl.get_hl('Special').fg or '#4f6f6f',
+                bg = hl.get_hl('Special').bg or '#1c1c1c1',
+            },
+        },
+        git = {
+            branch = {
+                fg = hl.get_hl('Constant').fg or '#1c1c1c1',
+                bg = hl.get_hl('Constant').bg or '#1c1c1c1',
+            },
+        },
+        fg = hl.get_hl('Normal').fg or 'bcbcbc',
+        bg = hl.get_hl('Normal').bg or '1c1c1c',
+    }
+end
+
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = function()
-        local palette = require('koda').get_palette()
         local sections = {
             lualine_a = {},
             lualine_b = {},
@@ -11,6 +142,14 @@ return {
             lualine_y = {},
             lualine_z = {},
         }
+
+        local colors = build_colors()
+
+        vim.api.nvim_create_autocmd('Colorscheme', {
+            callback = function()
+                colors = build_colors()
+            end,
+        })
 
         local function left(component)
             table.insert(sections.lualine_c, component)
@@ -21,55 +160,17 @@ return {
         end
 
         -- Modes
-        local modes = {
-            -- Normal
-            n = { 'NORMAL', '#5f87af' }, -- dusty blue
-            no = { 'OPERATOR', '#5f87af' },
-
-            -- Insert
-            i = { 'INSERT', '#6a9955' }, -- muted green
-            ic = { 'INSERT', '#6a9955' },
-            ix = { 'INSERT', '#6a9955' },
-
-            -- Visual
-            v = { 'VISUAL', '#875f87' }, -- faded purple
-            V = { 'V-LINE', '#875f87' },
-            [''] = { 'V-BLOCK', '#875f87' },
-
-            -- Select
-            s = { 'SELECT', '#5f8787' }, -- dusty teal
-            S = { 'S-LINE', '#5f8787' },
-            [''] = { 'S-BLOCK', '#5f8787' },
-
-            -- Replace
-            R = { 'REPLACE', '#af5f5f' }, -- muted red
-            Rv = { 'V-REPLACE', '#af5f5f' },
-
-            -- Command
-            c = { 'COMMAND', '#af875f' }, -- soft amber
-            cv = { 'VIM EX', '#af875f' },
-            ce = { 'EX', '#af875f' },
-
-            -- Terminal
-            t = { 'TERMINAL', '#5f5f87' }, -- deep muted indigo
-
-            -- Prompt / misc
-            r = { 'PROMPT', '#4f6f6f' }, -- desaturated cyan
-            rm = { 'MORE', '#4f6f6f' },
-            ['r?'] = { 'CONFIRM', '#4f6f6f' },
-        }
-
         left({
             function()
                 local mode = vim.api.nvim_get_mode().mode
-                local m = modes[mode] or { 'UNKNOWN', '#444444' }
-                return m[1]
+                local m = colors.modes[mode] or { 'UNKNOWN', '#444444' }
+                return m.mode
             end,
             padding = { left = 1, right = 1 },
             color = function()
                 local mode = vim.api.nvim_get_mode().mode
-                local m = modes[mode] or { nil, '#444444' }
-                return { fg = '#1c1c1c', bg = m[2] }
+                local m = colors.modes[mode] or { bg = nil, fg = '#444444' }
+                return { fg = m.fg, bg = m.bg, gui = 'bold' }
             end,
         })
 
@@ -82,7 +183,7 @@ return {
                 readonly = ' 󰌾',
                 unnamed = '[No Name]',
             },
-            color = { fg = '#bcbcbc' },
+            color = { fg = colors.fg },
             cond = function()
                 return vim.fn.winwidth(0) > 80
             end,
@@ -92,7 +193,7 @@ return {
         left({
             'branch',
             icon = ' ',
-            color = { fg = '#6a9955' },
+            color = { fg = colors.git.branch.fg },
         })
 
         -- Diffs
@@ -141,6 +242,7 @@ return {
                 return clients[1].name
             end,
             icon = ' ',
+            color = { fg = colors.fg },
             cond = function()
                 return vim.fn.winwidth(0) > 80
             end,
@@ -151,6 +253,7 @@ return {
             function()
                 return string.format('%d:%d', vim.fn.line('.'), vim.fn.col('.'))
             end,
+            color = { fg = colors.fg },
         })
 
         return {
