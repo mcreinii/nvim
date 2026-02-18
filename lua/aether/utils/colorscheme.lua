@@ -19,7 +19,6 @@ function M.setup_transparency()
             'LineNr',
             'FoldColumn',
             'Pmenu',
-            'PmenuSel',
             'PmenuSbar',
             'PmenuThumb',
             'TabLine',

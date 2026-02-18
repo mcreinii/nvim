@@ -10,7 +10,7 @@ return {
             javascript = { 'prettierd', 'prettier', stop_on_first = true },
         },
         format_on_save = {
-            timeout_ms = 1000,
+            timeout_ms = 2500,
             lsp_format = 'fallback',
         },
     },

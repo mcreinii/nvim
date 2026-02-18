@@ -167,6 +167,14 @@ return {
             color = { fg = colors.fg, bg = colors.bg },
         })
 
+        -- Time
+        right({
+            function()
+                return os.date('%I:%M:%S')
+            end,
+            color = { fg = colors.fg, bg = colors.bg },
+        })
+
         return {
             options = {
                 globalstatus = true,
