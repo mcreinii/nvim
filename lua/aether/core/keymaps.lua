@@ -22,7 +22,17 @@ nnoremap('<C-d>', '<C-d>zz', 'Scroll down (Centered)')
 -- Buffers
 nnoremap('<leader>bn', ':bn<cr>', 'Next buffer')
 nnoremap('<leader>bp', ':bp<cr>', 'Previous buffer')
-nnoremap('<leader>bd', ':bd<cr>', 'Delete buffer')
+nnoremap('<leader>bd', function()
+    local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+    if #buffers > 1 then
+        vim.cmd.bnext()
+        vim.cmd('silent bdelete #')
+    else
+        vim.cmd.enew()
+        pcall(vim.cmd, 'bdelete #')
+    end
+end, 'Delete buffer')
 
 nnoremap('J', ':m .+1<CR>==')
 nnoremap('K', ':m .-2<CR>==')
