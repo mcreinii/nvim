@@ -1,5 +1,7 @@
 local hl = require('aether.utils.colorscheme')
 
+local start_time = os.time()
+
 local function build_colors()
     local normal_bg = hl.get_hl('Normal').bg
 
@@ -159,18 +161,33 @@ return {
             end,
         })
 
-        -- Position
+        -- Elapsed
+        local function format_seconds(seconds)
+            local hours = math.floor(seconds / 3600)
+            local minutes = math.floor((seconds % 3600) / 60)
+            local secs = seconds % 60
+
+            return string.format('%02d:%02d:%02d', hours, minutes, secs)
+        end
+
         right({
             function()
-                return string.format('%d:%d', vim.fn.line('.'), vim.fn.col('.'))
+                return format_seconds(os.time() - start_time)
             end,
-            color = { fg = colors.fg, bg = colors.bg },
         })
 
         -- Time
         right({
             function()
-                return os.date('%I:%M:%S')
+                return os.date('%I:%M')
+            end,
+            color = { fg = colors.fg, bg = colors.bg },
+        })
+
+        -- Position
+        right({
+            function()
+                return string.format('%d:%d', vim.fn.line('.'), vim.fn.col('.'))
             end,
             color = { fg = colors.fg, bg = colors.bg },
         })
