@@ -146,13 +146,26 @@ return {
         })
 
         -- LSP
+        local last_time = 0
+        local lsp_index = 0
+        local prev_lsp = nil
         right({
             function()
-                local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+                local clients = vim.lsp.get_clients()
                 if #clients == 0 then
                     return 'No LSP'
                 end
-                return clients[1].name
+                if 2 > os.time() - last_time then
+                    return prev_lsp
+                end
+                if lsp_index >= #clients then
+                    lsp_index = 0
+                end
+
+                last_time = os.time()
+                lsp_index = lsp_index + 1
+                prev_lsp = clients[lsp_index].name
+                return prev_lsp
             end,
             icon = ' ',
             color = { fg = colors.fg, bg = colors.bg },
@@ -162,13 +175,13 @@ return {
         })
 
         -- Elapsed
-        local function format_seconds(seconds)
-            local hours = math.floor(seconds / 3600)
-            local minutes = math.floor((seconds % 3600) / 60)
-            local secs = seconds % 60
-
-            return string.format('%02d:%02d:%02d', hours, minutes, secs)
-        end
+        -- local function format_seconds(seconds)
+        --     local hours = math.floor(seconds / 3600)
+        --     local minutes = math.floor((seconds % 3600) / 60)
+        --     local secs = seconds % 60
+        --
+        --     return string.format('%02d:%02d:%02d', hours, minutes, secs)
+        -- end
 
         right({
             function()
