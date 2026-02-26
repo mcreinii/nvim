@@ -25,7 +25,7 @@ o.history = 1000
 o.swapfile = false
 o.backup = false
 o.undofile = true
-o.updatetime = 200
+o.updatetime = 500
 o.timeoutlen = 300
 o.ttimeoutlen = 10
 
