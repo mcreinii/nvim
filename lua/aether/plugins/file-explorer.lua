@@ -2,6 +2,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 return {
+    -- NEO TREE
     -- {
     --     'nvim-neo-tree/neo-tree.nvim',
     --     branch = 'v3.x',
@@ -20,36 +21,57 @@ return {
     --         { '<leader>e', ':Neotree toggle<cr>', desc = 'Open file explorer', silent = true, noremap = true },
     --     },
     -- },
-    {
-        'nvim-tree/nvim-tree.lua',
-        dependencies = {
+    -- {
 
-            'nvim-tree/nvim-web-devicons',
-        },
-        opts = {
-            sync_root_with_cwd = true,
-            hijack_cursor = true,
-            view = {
-                width = 30,
-                side = 'left',
-            },
-            renderer = {
-                highlight_opened_files = 'name',
-                indent_markers = { enable = true },
-            },
-            filters = {
-                dotfiles = false,
-            },
-            git = {
-                ignore = false,
-            },
-            update_focused_file = {
-                enable = true,
-                update_root = true,
-            },
-        },
+    -- NVIM_TREE
+
+    --     'nvim-tree/nvim-tree.lua',
+    --     dependencies = {
+    --
+    --         'nvim-tree/nvim-web-devicons',
+    --     },
+    --     opts = {
+    --         sync_root_with_cwd = true,
+    --         hijack_cursor = true,
+    --         view = {
+    --             width = 30,
+    --             side = 'left',
+    --         },
+    --         renderer = {
+    --             highlight_opened_files = 'name',
+    --             indent_markers = { enable = true },
+    --         },
+    --         filters = {
+    --             dotfiles = false,
+    --         },
+    --         git = {
+    --             ignore = false,
+    --         },
+    --         update_focused_file = {
+    --             enable = true,
+    --             update_root = true,
+    --         },
+    --     },
+    --     keys = {
+    --         { '<leader>e', ':NvimTreeToggle<cr>', desc = 'Open file explorer', silent = true, noremap = true },
+    --     },
+    -- },
+
+    -- MINI FILES
+
+    {
+        'nvim-mini/mini.files',
+        version = '*',
         keys = {
-            { '<leader>e', ':NvimTreeToggle<cr>', desc = 'Open file explorer', silent = true, noremap = true },
+            {
+                '<leader>e',
+                function()
+                    require('mini.files').open()
+                end,
+                desc = 'Open file explorer',
+                silent = true,
+                noremap = true,
+            },
         },
     },
 }

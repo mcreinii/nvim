@@ -2,6 +2,7 @@ return {
     'nvim-telescope/telescope.nvim',
     version = '*',
     dependencies = {
+        'nvim-telescope/telescope-file-browser.nvim',
         'nvim-lua/plenary.nvim',
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
@@ -47,6 +48,13 @@ return {
                 require('telescope.builtin').buffers()
             end,
             desc = 'Buffers',
+        },
+        {
+            '<leader>fB',
+            function()
+                require('telescope').extensions.file_browser.file_browser()
+            end,
+            desc = 'File browser',
         },
         {
             '<leader>fh',
