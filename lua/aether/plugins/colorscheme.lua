@@ -1,10 +1,10 @@
 return {
     {
-        'vague-theme/vague.nvim',
+        'datsfilipe/vesper.nvim',
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd('colorscheme vague')
+            vim.cmd('colorscheme vesper')
         end,
     },
 }

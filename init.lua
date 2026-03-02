@@ -2,7 +2,11 @@ require('aether.core.options')
 require('aether.core.keymaps')
 
 -- Transparent
+<<<<<<< HEAD
 -- require('aether.utils.colorscheme').setup_transparency()
+=======
+require('aether.utils.colorscheme').setup_transparency()
+>>>>>>> 5712c80 (eh.)
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

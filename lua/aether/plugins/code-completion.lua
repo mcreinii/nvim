@@ -6,6 +6,9 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+        completion = {
+            documentation = { auto_show = true },
+        },
         sources = {
             default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
             providers = {
@@ -17,6 +20,7 @@ return {
                 },
             },
         },
+        fuzzy = { implementation = 'prefer_rust_with_warning' },
     },
     opts_extend = { 'sources.default' },
 }
