@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 opt.relativenumber = true
 opt.signcolumn = 'yes'
 opt.autoindent = true
@@ -18,5 +21,3 @@ opt.termguicolors = true
 opt.splitright = true
 opt.splitbelow = true
 opt.winborder = 'single'
-
-opt.shortmess:append('I')
