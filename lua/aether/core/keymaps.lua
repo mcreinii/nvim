@@ -34,8 +34,8 @@ nnoremap('<leader>bd', function()
     end
 end, 'Delete buffer')
 
-nnoremap('J', ':m .+1<CR>==')
-nnoremap('K', ':m .-2<CR>==')
+nnoremap('<C-j>', ':m .+1<CR>==')
+nnoremap('<C-k>', ':m .-2<CR>==')
 
-vnoremap('J', ":m '>+1<CR>gv=gv")
-vnoremap('K', ":m '<-2<CR>gv=gv")
+vnoremap('<C-j>', ":m '>+1<CR>gv=gv")
+vnoremap('<C-k>', ":m '<-2<CR>gv=gv")
