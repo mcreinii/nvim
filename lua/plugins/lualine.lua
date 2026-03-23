@@ -28,7 +28,7 @@ return {
                 c = { label = 'COMMAND', hl = 'Special' },
                 R = { label = 'REPLACE', hl = 'Error' },
             }
-            local fg = hl.get_hl('String')
+            local normal = hl.get_hl('Normal')
 
             local function left(component)
                 table.insert(sections.lualine_c, component)
@@ -52,29 +52,7 @@ return {
                         bg = colors.fg or '#ffffff',
                     }
                 end,
-            })
-
-            left({
-                'filename',
-                file_status = true, -- show [+] for modified
-                path = 1, -- relative path
-                color = function()
-                    local c = hl.get_hl('Directory')
-                    return { fg = c.fg or '#ffffff', bg = c.bg, gui = 'bold' }
-                end,
-            })
-
-            left({
-                'diagnostics',
-                diagnostics_color = {
-                    error = hl.get_hl('DiagnosticError'),
-                    warn = hl.get_hl('DiagnosticWarn'),
-                    info = hl.get_hl('DiagnosticInfo'),
-                    hint = hl.get_hl('DiagnosticHint'),
-                },
-                symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-                colored = true,
-                update_in_insert = false,
+                padding = { left = 1, right = 1 },
             })
 
             right({
@@ -87,17 +65,59 @@ return {
             })
 
             right({
-                function()
-                    local branch = vim.fn.system('git branch --show-current | tr -d "\\n"')
-                    if vim.v.shell_error == 0 then
-                        return ' ' .. branch
-                    else
-                        return ''
-                    end
-                end,
+                'branch',
                 color = {
-                    fg = fg,
+                    fg = normal.fg,
                 },
+                padding = { left = 1, right = 1 },
+            })
+
+            return sections
+        end)(),
+        winbar = (function()
+            local sections = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {},
+            }
+
+            local hl = require('helpers.hl')
+            local normal = hl.get_hl('Normal')
+
+            local function left(component)
+                table.insert(sections.lualine_c, component)
+            end
+            local function right(component)
+                table.insert(sections.lualine_x, component)
+            end
+
+            left({
+                'filename',
+                file_status = true,
+                path = 1,
+                color = {
+                    fg = normal.fg,
+                    bg = normal.bg,
+                },
+                padding = { left = 1, right = 1 },
+            })
+
+            right({
+                'diagnostics',
+                diagnostics_color = {
+                    error = hl.get_hl('DiagnosticError'),
+                    warn = hl.get_hl('DiagnosticWarn'),
+                    info = hl.get_hl('DiagnosticInfo'),
+                    hint = hl.get_hl('DiagnosticHint'),
+                },
+                symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+                colored = true,
+                color = { bg = normal.bg },
+                update_in_insert = true,
+                padding = { left = 1, right = 1 },
             })
 
             return sections
