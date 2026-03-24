@@ -28,6 +28,21 @@ return {
                 keymap('n', '<leader>lf', function()
                     require('conform').format({ bufnr = buf })
                 end, keymapOptions)
+
+                -- Diagnostic
+                keymap('n', '<leader>ld', function()
+                    vim.diagnostic.open_float()
+                end, keymapOptions)
+
+                -- Definitions
+                keymap('n', '<leader>lD', function()
+                    vim.lsp.buf.definition()
+                end, keymapOptions)
+
+                -- References
+                keymap('n', '<leader>lR', function()
+                    vim.lsp.buf.references()
+                end, keymapOptions)
             end,
         })
         require('mason-lspconfig').setup(opts)
