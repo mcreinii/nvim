@@ -5,7 +5,9 @@ local keymap = vim.keymap.set
 local opts = { silent = true, noremap = true }
 
 -- Specials, NetRW and sourcing
-keymap('n', '<leader>e', ':Ex<cr>', opts)
+keymap('n', '<leader>e', function ()
+    vim.notify('File Explorer is <leader>fe', vim.log.levels.INFO)
+end, opts)
 keymap('n', '<leader>so', function()
     vim.cmd('so %')
     print('Sourced file.')
