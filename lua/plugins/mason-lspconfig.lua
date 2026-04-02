@@ -26,7 +26,7 @@ return {
 
                 -- Format
                 keymap('n', '<leader>lf', function()
-                    require('conform').format({ bufnr = buf })
+                    require('conform').format({ bufnr = buf, timeout_ms = 5000 })
                 end, keymapOptions)
 
                 -- Diagnostic

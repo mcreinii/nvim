@@ -24,6 +24,7 @@ return {
         keymap('n', '<leader>ff', builtin.find_files)
         keymap('n', '<leader>fr', builtin.oldfiles)
         keymap('n', '<leader>fg', builtin.live_grep)
+        keymap('n', '<leader>fG', builtin.git_files)
         keymap('n', '<leader>fb', builtin.buffers)
         keymap('n', '<leader>fd', builtin.diagnostics)
         keymap('n', '<leader>fe', extensions.file_browser.file_browser)
