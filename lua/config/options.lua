@@ -21,5 +21,4 @@ opt.cursorline = true
 opt.termguicolors = true
 opt.splitright = true
 opt.splitbelow = true
-opt.winborder = 'single'
-opt.colorcolumn = '80'
+opt.winborder = 'rounded'

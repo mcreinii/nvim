@@ -109,6 +109,7 @@ return {
 
 			local hl = require("helpers.hl")
 			local builder = create_section_builder(sections)
+
 			local normal = hl.get_hl("Normal")
 
 			-- File path with status
@@ -118,7 +119,6 @@ return {
 				path = 1, -- Relative path
 				color = {
 					fg = hl.get_hl('Directory').fg,
-					bg = normal.bg,
 				},
 				padding = { left = 1, right = 1 },
 			})
