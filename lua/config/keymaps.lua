@@ -1,48 +1,54 @@
-vim.g.localmapleader = '\\'
-vim.g.mapleader = ' '
+--- Global keymaps configuration
+--- This file contains all global keybindings
+--- Plugin-specific keybindings are defined in their respective plugin files
 
-local keymap = vim.keymap.set
-local opts = { silent = true, noremap = true }
+vim.g.localmapleader = "\\"
+vim.g.mapleader = " "
 
--- Specials, NetRW and sourcing
-keymap('n', '<leader>e', function ()
-    vim.notify('File Explorer is <leader>fe', vim.log.levels.INFO)
-end, opts)
-keymap('n', '<leader>so', function()
-    vim.cmd('so %')
-    print('Sourced file.')
-end, opts)
+local map = require("helpers.keymap").set
 
--- Quick save, close, and quit Nvim.
-keymap('n', '<leader>w', ':up<cr>', opts)
-keymap('n', '<leader>q', ':q<cr>', opts)
-keymap('n', '<leader>Q', ':qa<cr>', opts)
+-- File Explorer
+-- Note: Using Telescope for file exploration (<leader>fe)
+map("n", "<leader>e", function()
+	vim.notify("File Explorer is <leader>fe", vim.log.levels.INFO)
+end, { desc = "File explorer hint" })
 
--- Buffer delete, previous, and next
-keymap('n', '<leader>bp', ':bp<cr>', opts)
-keymap('n', '<leader>bn', ':bn<cr>', opts)
-keymap('n', '<leader>bd', ':bd<cr>', opts)
+-- Source current file
+map("n", "<leader>so", function()
+	vim.cmd("so %")
+	print("Sourced file.")
+end, { desc = "Source current file" })
 
--- Center half page scrolling.
-keymap('n', '<C-u>', '<C-u>zz', opts)
-keymap('n', '<C-d>', '<C-d>zz', opts)
+-- Quick save, close, and quit
+map("n", "<leader>w", ":up<cr>", { desc = "Save file" })
+map("n", "<leader>q", ":q<cr>", { desc = "Quit window" })
+map("n", "<leader>Q", ":qa<cr>", { desc = "Quit all" })
 
--- Center search result cycles.
-keymap('n', 'n', 'nzzzv', opts)
-keymap('n', 'N', 'Nzzzv', opts)
+-- Buffer navigation
+map("n", "<leader>bp", ":bp<cr>", { desc = "Previous buffer" })
+map("n", "<leader>bn", ":bn<cr>", { desc = "Next buffer" })
+map("n", "<leader>bd", ":bd<cr>", { desc = "Delete buffer" })
 
--- Quick exit out of INSERT mode.
-keymap('i', 'jk', '<Esc>', opts)
+-- Center half page scrolling
+map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up (centered)" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down (centered)" })
 
--- Clear highlights.
-keymap('n', '<leader>h', ':nohlsearch<cr>', opts)
+-- Center search results
+map("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+map("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 
--- Move lines around.
-keymap('n', '<C-j>', ':m .+1<cr>==', opts)
-keymap('n', '<C-k>', ':m .-2<cr>==', opts)
-keymap('v', '<C-j>', ":m '>+1<cr>gv=gv", opts)
-keymap('v', '<C-k>', ":m '<-2<cr>gv=gv", opts)
+-- Quick exit INSERT mode
+map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 
--- Indenting
-keymap('v', '>', '>gv', opts)
-keymap('v', '<', '<gv', opts)
+-- Clear search highlights
+map("n", "<leader>h", ":nohlsearch<cr>", { desc = "Clear search highlights" })
+
+-- Move lines up and down
+map("n", "<C-j>", ":m .+1<cr>==", { desc = "Move line down" })
+map("n", "<C-k>", ":m .-2<cr>==", { desc = "Move line up" })
+map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move selection down" })
+map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move selection up" })
+
+-- Indenting (keep selection)
+map("v", ">", ">gv", { desc = "Indent right" })
+map("v", "<", "<gv", { desc = "Indent left" })
