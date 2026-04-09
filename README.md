@@ -13,27 +13,25 @@ A modern, minimal Neovim configuration focused on LSP, completion, and code navi
 │   │   ├── keymaps.lua        # Global keybindings
 │   │   └── lazy.lua           # Plugin manager bootstrap
 │   ├── helpers/               # Utility modules
-│   │   └── hl.lua            # Highlight color extraction helper
+│   │   ├── hl.lua             # Highlight color extraction helper
+│   │   └── keymap.lua         # Keymap helper module
 │   ├── plugins/               # Plugin specifications (lazy.nvim)
-│   │   ├── blink-cmp.lua     # Completion engine
-│   │   ├── colorscheme.lua   # Theme configuration (Jellybeans)
-│   │   ├── comfy-rln.lua     # Comfortable relative line numbers
-│   │   ├── conform.lua       # Code formatter (Stylua, Prettier)
-│   │   ├── fidget.lua        # LSP progress notifications
-│   │   ├── flash.lua         # Motion/jump navigation
-│   │   ├── gitsigns.lua      # Git integration
-│   │   ├── lazydev.lua       # Lua development tools
-│   │   ├── lualine.lua       # Statusline & winbar
-│   │   ├── markdown.lua      # Markdown rendering
-│   │   ├── mason-lspconfig.lua # LSP server management
-│   │   ├── notification.lua  # Notification system (mini.notify)
-│   │   ├── telescope.lua     # Fuzzy finder
-│   │   └── treesitter.lua    # Syntax highlighting
-│   ├── development/           # Development-only plugins
-│   │   └── plugins.lua       # Local plugin loader
-│   └── combo/                 # Custom combo tracking plugin
-│       └── init.lua          # Keypress streak gamification
-├── stylua.toml                # Lua code formatter config
+    │   │   ├── blink-cmp.lua     # Completion engine
+    │   │   ├── colorscheme.lua   # Theme configuration (Jellybeans)
+    │   │   ├── relative-numbers.lua # Comfortable relative line numbers
+    │   │   ├── conform.lua       # Code formatter (Stylua, Prettier)
+    │   │   ├── explorer.lua      # File explorer (nvim-tree)
+    │   │   ├── fidget.lua        # LSP progress notifications
+    │   │   ├── flash.lua         # Motion/jump navigation
+    │   │   ├── gitsigns.lua      # Git integration
+    │   │   ├── lazydev.lua       # Lua development tools
+    │   │   ├── lualine.lua       # Statusline & winbar
+    │   │   ├── markdown.lua      # Markdown rendering
+    │   │   ├── mason-lspconfig.lua # LSP server management
+    │   │   ├── notification.lua  # Notification system (mini.notify)
+    │   │   ├── telescope.lua     # Fuzzy finder
+    │   │   └── treesitter.lua    # Syntax highlighting
+    ├── stylua.toml                # Lua code formatter config
 └── lazy-lock.json            # Plugin version lockfile
 ```
 
@@ -197,16 +195,6 @@ formatters_by_ft = {
     your_filetype = { "formatter_name" },
 }
 ```
-
-## Development Features
-
-### Combo Plugin
-
-The `lua/combo/` directory contains a custom plugin that tracks keypress combos and displays a streak counter in a floating window. This is a gamification feature for fun.
-
-### Local Plugin Development
-
-The `lua/development/plugins.lua` file loads local plugins for development. This is useful for testing plugins before publishing.
 
 ## Design Decisions
 

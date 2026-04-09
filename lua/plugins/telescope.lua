@@ -7,7 +7,6 @@ return {
 	version = "*",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-file-browser.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	opts = {
@@ -20,7 +19,6 @@ return {
 	},
 	config = function(_, opts)
 		require("telescope").setup(opts)
-		require("telescope").load_extension("file_browser")
 
 		local map = require("helpers.keymap").set
 		local builtin = require("telescope.builtin")
@@ -37,9 +35,6 @@ return {
 		-- Buffer and diagnostics
 		map("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 		map("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope diagnostics" })
-
-		-- File browser
-		map("n", "<leader>fe", extensions.file_browser.file_browser, { desc = "Telescope file browser" })
 
 		-- Help
 		map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })

@@ -7,12 +7,6 @@ vim.g.mapleader = " "
 
 local map = require("helpers.keymap").set
 
--- File Explorer
--- Note: Using Telescope for file exploration (<leader>fe)
-map("n", "<leader>e", function()
-	vim.notify("File Explorer is <leader>fe", vim.log.levels.INFO)
-end, { desc = "File explorer hint" })
-
 -- Source current file
 map("n", "<leader>so", function()
 	vim.cmd("so %")

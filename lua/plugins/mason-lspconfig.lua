@@ -33,7 +33,7 @@ return {
 
 				-- Format current buffer using conform.nvim
 				map("n", "<leader>lf", function()
-					require("conform").format({ bufnr = buf, timeout_ms = 5000 })
+					require("conform").format({ timeout_ms = 5000 })
 				end, { buffer = buf, desc = "LSP format buffer" })
 
 				-- Show diagnostics in floating window
