@@ -8,16 +8,29 @@ return {
     --         vim.cmd('colorscheme jellybeans-hc')
     --     end,
     -- },
+    -- {
+    --     'catppuccin/nvim',
+    --     name = 'catppuccin',
+    --     priority = 1000,
+    --     opts = {
+    --         transparent_background = true,
+    --     },
+    --     config = function(_, opts)
+    --         require('catppuccin').setup(opts)
+    --         vim.cmd('colorscheme catppuccin-mocha')
+    --     end,
+    -- },
     {
-        'catppuccin/nvim',
-        name = 'catppuccin',
-        priority = 1000,
+        'rose-pine/neovim',
+        name = 'rose-pine',
         opts = {
-            transparent_background = true,
+            styles = {
+                transparency = true,
+            },
         },
         config = function(_, opts)
-            require('catppuccin').setup(opts)
-            vim.cmd('colorscheme catppuccin-mocha')
+            require('rose-pine').setup(opts)
+            vim.cmd('colorscheme rose-pine')
         end,
     },
 }
